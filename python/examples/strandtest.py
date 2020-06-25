@@ -202,11 +202,11 @@ if __name__ == '__main__':
             act_time = time.time()
             while (time.time() < (act_time +15)):
                 strobe(strip)
-            print('Snow sparkle animation for 15 Seconds'):
+            print('Snow sparkle animation for 15 Seconds')
             act_time = time.time()
             while  (time.time() < (act_time +15)):
                 snow_sparkle(strip)
-            print('Bouncing Ball animation for 15 Seconds'):
+            print('Bouncing Ball animation for 15 Seconds')
             act_time = time.time()
             while (time.time() < (act_time +15)):
                 bouncing_balls(strip)
