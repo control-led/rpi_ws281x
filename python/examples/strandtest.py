@@ -116,7 +116,7 @@ def snow_sparkle(strip,sparkle_delay=20):
     strip.show()
     time.sleep(sparkle_delay/1000.0)
     
-def bouncing_balls(strip,ball_count=4, wait_ms=200):
+def bouncing_balls(strip, playtime, ball_count=4, wait_ms=200):
     """Shows an accelerated pixel with physical behavour like a ball in a flipper game"""
     import time, math
     start_time = time.time()
@@ -142,8 +142,8 @@ def bouncing_balls(strip,ball_count=4, wait_ms=200):
         ImpactVelocity[i] = math.sqrt(-2 * -9.81 * 1)
         TimeSinceLastBounce[i] = 0
         Dampening[i] = 0.90 - (float(i)/(ball_count**2))
-
-    while True:
+    act_time = time.time()
+    while (act_time+ playtime< time.time()):
         for i in range(ball_count):
             TimeSinceLastBounce[i] = time.time() - ClockTimeSinceLastBounce[i]
             Height[i] = 0.5 * (-9.81) * (TimeSinceLastBounce[i]**2) + ImpactVelocity[i] * TimeSinceLastBounce[i]
@@ -208,8 +208,7 @@ if __name__ == '__main__':
                 snow_sparkle(strip)
             print('Bouncing Ball animation for 15 Seconds')
             act_time = time.time()
-            while (time.time() < (act_time +15)):
-                bouncing_balls(strip)
+            bouncing_balls(strip, 15)
             
     except KeyboardInterrupt:
         if args.clear:
