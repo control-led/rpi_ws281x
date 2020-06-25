@@ -143,7 +143,7 @@ def bouncing_balls(strip, playtime, ball_count=4, wait_ms=200):
         TimeSinceLastBounce[i] = 0
         Dampening[i] = 0.90 - (float(i)/(ball_count**2))
     act_time = time.time()
-    while (act_time+ playtime< time.time()):
+    while ((act_time+ playtime)> time.time()):
         for i in range(ball_count):
             TimeSinceLastBounce[i] = time.time() - ClockTimeSinceLastBounce[i]
             Height[i] = 0.5 * (-9.81) * (TimeSinceLastBounce[i]**2) + ImpactVelocity[i] * TimeSinceLastBounce[i]
